@@ -167,6 +167,26 @@ vault::listener:
 vault::default_lease_ttl: 720h
 ```
 
+### Enabling the UI
+
+Use the `$extra_config` setting
+
+```puppet
+class { '::vault':
+  listener => {
+    tcp => {
+      address       => '0.0.0.0:8200',
+      tls_disable   => 0,
+    },
+  },
+  extra_config => {
+    ui => true,
+  }
+}
+```
+
+https://www.vaultproject.io/docs/enterprise/ui/index.html
+
 ## mlock
 
 By default vault will use the `mlock` system call, therefore the executable will need the corresponding capability.
